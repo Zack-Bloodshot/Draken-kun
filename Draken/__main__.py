@@ -77,7 +77,7 @@ async def request(mikey):
   if mikey.is_private:
     return
   reqseries = -1001487075546
-  babua = -1001550963689
+  reqgroup = -1001550963689
   adc = -1001392274404
   query = mikey.message.text.split(" ", 1)
   if mikey.message.text.startswith("/files"):
@@ -131,7 +131,7 @@ async def request(mikey):
     count2 = 0
     for chat in sources:
       async for message in takemichi.iter_messages(chat, search = query, reverse = True):
-        hek = await draken.get_messages(chat2, ids=message.id)
+        hek = await draken.get_messages(reqgroup, ids=message.id)
         if message.media and (message.video or message.document):
           await draken.send_file(mikey.chat_id, file=hek.media)
           count2 += 1 
