@@ -110,10 +110,10 @@ async def request(mikey):
   count = 0
   text = ''
   if only_files == "Off":
-    async for message in takemichi.iter_messages(chat, search=query):
+    async for message in takemichi.iter_messages(reqseries, search=query):
       text = message.raw_text.split('•')[0]
       msg_id = message.id 
-      link = f"https://t.me/c/{str(chat)[4:]}/{str(msg_id)}" 
+      link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
       keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
     async for message in takemichi.iter_messages(adc, search=query):
       text = message.raw_text.split('•')[0]
