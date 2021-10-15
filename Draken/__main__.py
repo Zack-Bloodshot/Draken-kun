@@ -29,7 +29,7 @@ draken = TelegramClient('bot', api_id, api_hash).start(bot_token=draken_token)
 
 takemichi = TelegramClient(StringSession(string), api_id, api_hash)
 
-REQ_CHAT = -1001495696882
+REQ_CHAT = -1001655543978
 
 if takemichi:
   print("takemichi connected!!")
@@ -76,8 +76,8 @@ async def request(mikey):
   global REQ_CHAT
   if mikey.is_private:
     return
-  chat = -1001487075546
-  chat2 = -1001550963689
+  reqseries = -1001487075546
+  babua = -1001550963689
   adc = -1001392274404
   query = mikey.message.text.split(" ", 1)
   if mikey.message.text.startswith("/files"):
@@ -110,6 +110,11 @@ async def request(mikey):
   count = 0
   text = ''
   if only_files == "Off":
+    async for message in takemichi.iter_messages(chat, search=query):
+      text = message.raw_text.split('•')[0]
+      msg_id = message.id 
+      link = f"https://t.me/c/{str(chat)[4:]}/{str(msg_id)}" 
+        keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
     async for message in takemichi.iter_messages(adc, search=query):
       text = message.raw_text.split('•')[0]
       ignore = list(range(196, 254))
@@ -141,9 +146,20 @@ async def request(mikey):
       m = await mikey.reply("Found some results....", buttons = keybo)
       return
   if req_log == "True":
+    h = [int(s) for s in re.findall(r'-?\d+\.?\d*', query)]
+    cnt = 0
+    for i in h:
+      if len(str(i)) == 4:
+        cnt += 1
+      if h == [] or cnt == 0:
+        m = await mikey.reply('You didn\'t mention **year!**, Please check [this](https://t.me/c/1183336084/84418) and request!')
+        return
+        await asyncio.sleep(20)
+        await mikey.delete()
+        await m.delete()
     req_user = f"[{mikey.sender.first_name}](tg://user?id={mikey.sender_id})" 
     message_link = f"https://t.me/c/{str(REQ_CHAT)[4:]}/{mikey.id}"
-    text = f"Request: {query}\nRequested by: {req_user}\n"
+      text = f"Request: {query}\nRequested by: {req_user}\n"
     await draken.send_message(-1001550475256, text, buttons = [[Button.url(text = "Message", url = message_link)], [Button.inline(text="Request Complete", data = "recomp")]])
     await mikey.reply("Roger! Request taken, Now wait like a good meme!")
   
