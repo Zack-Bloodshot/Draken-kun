@@ -152,7 +152,7 @@ async def request(mikey):
       if len(str(i)) == 4:
         cnt += 1
       if h == [] or cnt == 0:
-        m = await mikey.reply('You didn\'t mention **year!**, Please check [this](https://t.me/c/1183336084/84418) and request!')
+        m = await mikey.reply('You didn\'t mention **year!**, Please check [this](https://t.me/c/1655543978/216) and request!')
         return
         await asyncio.sleep(20)
         await mikey.delete()
