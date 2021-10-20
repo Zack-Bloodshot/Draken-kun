@@ -116,7 +116,7 @@ async def request(mikey):
       text = message.raw_text.split('•')[0]
       msg_id = message.id 
       link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
-      keybo.append([Button.url(text = f'{text[:30]}...',url= linkurl
+      keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
     #ensembly
     async for message in takemichi.iter_messages(ensembly, search=query):
       text = message.raw_text.split('•')[0]
