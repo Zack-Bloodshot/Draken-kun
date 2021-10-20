@@ -79,6 +79,7 @@ async def request(mikey):
   reqseries = -1001487075546
   reqgroup = -1001550963689
   adc = -1001392274404
+  ensembly = -1001475656373
   query = mikey.message.text.split(" ", 1)
   if mikey.message.text.startswith("/files"):
     if not mikey.sender_id in admins:
@@ -111,6 +112,11 @@ async def request(mikey):
   text = ''
   if only_files == "Off":
     async for message in takemichi.iter_messages(reqseries, search=query):
+      text = message.raw_text.split('•')[0]
+      msg_id = message.id 
+      link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
+      keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
+    async for message in takemichi.iter_messages(ensembly, search=query):
       text = message.raw_text.split('•')[0]
       msg_id = message.id 
       link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
