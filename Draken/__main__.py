@@ -120,12 +120,12 @@ async def request(mikey):
     #ensembly
     async for message in takemichi.iter_messages(ensembly, search=query):
       text = message.raw_text.split('•')
-      if len(text) < 1:
+      if len(text) < 2:
         pass
       else:
         msg_id = message.id 
         link = f"https://t.me/c/{str(ensembly)[4:]}/{str(msg_id)}" 
-        keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
+        keybo.append([Button.url(text = f'{text[0][:30]}...',url= link)])
     #anime gallery
     async for message in takemichi.iter_messages(adc, search=query):
       text = message.raw_text.split('•')[0]
