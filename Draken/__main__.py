@@ -111,16 +111,19 @@ async def request(mikey):
   count = 0
   text = ''
   if only_files == "Off":
+    #reqseries
     async for message in takemichi.iter_messages(reqseries, search=query):
       text = message.raw_text.split('•')[0]
       msg_id = message.id 
       link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
-      keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
+      keybo.append([Button.url(text = f'{text[:30]}...',url= linkurl
+    #ensembly
     async for message in takemichi.iter_messages(ensembly, search=query):
       text = message.raw_text.split('•')[0]
       msg_id = message.id 
-      link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
+      link = f"https://t.me/c/{str(ensembly)[4:]}/{str(msg_id)}" 
       keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
+    #anime gallery
     async for message in takemichi.iter_messages(adc, search=query):
       text = message.raw_text.split('•')[0]
       ignore = list(range(196, 254))
