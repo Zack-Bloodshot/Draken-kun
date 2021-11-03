@@ -116,7 +116,7 @@ async def request(mikey):
       async for message in takemichi.iter_messages(reqseries, search=query):
         text = message.raw_text.split('•')[0]
         msg_id = message.id 
-        link = f"https://t.me/c/{str(reqseries)[4:]}/{str(msg_id)}" 
+        link = f"https://t.me/TvSeriesArchive/{str(msg_id)}" 
         keybo.append([Button.url(text = f'{text[:30]}...',url= link)])
     #ensembly
     if keybo == []:
@@ -126,7 +126,7 @@ async def request(mikey):
           pass
         else:
           msg_id = message.id 
-          link = f"https://t.me/c/{str(ensembly)[4:]}/{str(msg_id)}" 
+          link = f"https://t.me/ensembly/{str(msg_id)}" 
           keybo.append([Button.url(text = f'{text[0][:30]}...',url= link)])
     #anime gallery
     if keybo == []:
