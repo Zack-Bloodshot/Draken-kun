@@ -212,18 +212,21 @@ async def post_comp(mikey):
         return
       msg_id = message.id 
       link = f"https://t.me/ensembly/{str(msg_id)}" 
-      title = message.raw_text.split('\n\n')[0]
+      text = message.raw_text.split('•')
       description = message.raw_text.replace('\n', '|')
-      keybo.append(
-        mikey.builder.article(
-          title=f'{title}',
-          description=f'{description}......',
-          text=f'{title} - [Click Here]({link})',
+      if len(text) < 2:
+        pass
+      else:
+        keybo.append(
+          mikey.builder.article(
+            title=f'{text}',
+            description=f'{description}......',
+            text=f'{title} - [Click Here]({link})',
+            )
           )
-        )
   if keybo == []:
       await mikey.answer([], switch_pm='Couldn\'t find...', switch_pm_param='')
-  await mikey.answer(keybo)
+  await mikey.answer(keybo, )
 
 @user_admin
 @draken.on(events.CallbackQuery(pattern=b'recomp'))
