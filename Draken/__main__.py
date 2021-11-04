@@ -219,9 +219,9 @@ async def post_comp(mikey):
       else:
         keybo.append(
           mikey.builder.article(
-            title=f'{text}',
+            title=f'{text[0]}',
             description=f'{description}......',
-            text=f'{text} - [Click Here]({link})',
+            text=f'{text[0]} - [Click Here]({link})',
             )
           )
   if keybo == []:
