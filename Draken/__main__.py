@@ -210,20 +210,17 @@ async def post_comp(mikey):
       if len(keybo) > 30:
         await mikey.answer([], switch_pm='Try to be a little specific...', switch_pm_param='start')
         return
-      if len(text) < 2:
-        pass
-      else:
-        msg_id = message.id 
-        link = f"https://t.me/ensembly/{str(msg_id)}" 
-        title = message.raw_text.split('\n\n')[0]
-        description = message.raw_text.replace('\n', '|')
-        keybo.append(
-          mikey.builder.article(
-            title=f'{title}',
-            description=f'{description}......',
-            text=f'{title} - [Click Here]({link})',
-            )
+      msg_id = message.id 
+      link = f"https://t.me/ensembly/{str(msg_id)}" 
+      title = message.raw_text.split('\n\n')[0]
+      description = message.raw_text.replace('\n', '|')
+      keybo.append(
+        mikey.builder.article(
+          title=f'{title}',
+          description=f'{description}......',
+          text=f'{title} - [Click Here]({link})',
           )
+        )
   if keybo == []:
       await mikey.answer([], switch_pm='Couldn\'t find...', switch_pm_param='')
   await mikey.answer(keybo)
