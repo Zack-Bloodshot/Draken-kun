@@ -200,7 +200,7 @@ async def post_comp(mikey):
       title = message.raw_text.split('\n\n')[0]
       description = message.raw_text.replace('\n', '|')
       keybo.append(
-        mikey.builder.article(
+        await mikey.builder.article(
           title=f'{title}',
           description=f'{description}......',
           text=f'{message.text}',
@@ -218,16 +218,16 @@ async def post_comp(mikey):
         pass
       else:
         keybo.append(
-          mikey.builder.article(
+          await mikey.builder.article(
             title=f'{text[0]}',
             description=f'{description}......',
             text=f'{text[0]} - [Click Here]({link})',
-            link_preview = True,
+            link_preview = False,
             )
           )
   if keybo == []:
       await mikey.answer([], switch_pm='Couldn\'t find...', switch_pm_param='')
-  await mikey.answer(keybo, )
+  await mikey.answer(keybo)
 
 @user_admin
 @draken.on(events.CallbackQuery(pattern=b'recomp'))
