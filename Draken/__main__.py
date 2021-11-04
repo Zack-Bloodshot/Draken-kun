@@ -222,6 +222,7 @@ async def post_comp(mikey):
             title=f'{text[0]}',
             description=f'{description}......',
             text=f'{text[0]} - [Click Here]({link})',
+            link_preview = True,
             )
           )
   if keybo == []:
