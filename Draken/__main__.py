@@ -160,6 +160,7 @@ async def request(mikey):
   else:
     if len(keybo) <= 10:
       m = await mikey.reply("Found some results....", buttons = keybo)
+      return
     else:
       m = await mikey.reply('Please be more specific... like mention the year..')
       return
