@@ -158,7 +158,10 @@ async def request(mikey):
         await mikey.reply('Not found')
         return
   else:
+    if len(keybo) <= 10:
       m = await mikey.reply("Found some results....", buttons = keybo)
+    else:
+      m = await mikey.reply('Please be more specific... like mention the year..')
       return
   if req_log == "True":
     req_user = f"[{mikey.sender.first_name}](tg://user?id={mikey.sender_id})" 
