@@ -52,9 +52,9 @@ def hrs(size, decimal_places=2):
         size /= 1024.0
     return f"{size:.{decimal_places}f} {unit}"
 
-async def get_all_admins(chat_id):
-  async for admin in draken.iter_participants(chat_id, filter=ChannelParticipantsAdmins):
-    admins.append(admin.id)
+#async def get_all_admins(chat_id):
+#  async for admin in draken.iter_participants(chat_id, filter=ChannelParticipantsAdmins):
+#    admins.append(admin.id)
 
 async def user_admin(the_fuc):
   async def check_admin(mikey):
@@ -74,7 +74,7 @@ async def admincache(mikey):
 @draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
 async def request(mikey):
   global REQ_CHAT
-  if mikey.is_private:
+  if not mikey.is_private:
     return
   reqseries = -1001487075546
   reqgroup = -1001550963689
@@ -92,8 +92,6 @@ async def request(mikey):
     req_log='False'
   else:
     only_files = "Off"
-  if not mikey.chat_id == REQ_CHAT:
-    req_log = "False"
   elif mikey.message.text.startswith("/search"):
     if not mikey.sender_id in admins:
       return  
@@ -320,7 +318,7 @@ async def torrentsearch(mikey):
 
 print('Im online!!!')
 
-loop.run_until_complete(get_all_admins(REQ_CHAT))
+#loop.run_until_complete(get_all_admins(REQ_CHAT))
 
 takemichi.start()
 draken.start()
