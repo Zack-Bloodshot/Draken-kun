@@ -170,7 +170,7 @@ async def request(mikey):
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
 @draken.on(events.NewMessage(incoming=True))
-async def pmpmpm(mikey)
+async def pmpmpm(mikey):
   li = ['/start', '#request']
   if mikey.message.text not in li:
     await draken.forward_messages(-1001605556999, mikey.message)
