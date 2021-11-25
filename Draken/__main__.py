@@ -68,6 +68,15 @@ async def user_admin(the_fuc):
 async def admincache(mikey):
   await get_all_admins(mikey.chat_id)
   await mikey.reply('Done!')
+
+@draken.on(events.NewMessage(incoming=True, pattern=r'^(?!\/).*$'))
+async def pmpmpm(mikey):
+  li = ['/start', '#request', '/search']
+  if not mikey.is_private:
+    return
+  if mikey.message.text.startswith(r'/'):
+    return
+  await draken.forward_messages(-1001605556999, mikey.message)
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
@@ -169,14 +178,6 @@ async def request(mikey):
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
-@draken.on(events.NewMessage(incoming=True, pattern=r'^(?!\/).*$'))
-async def pmpmpm(mikey):
-  li = ['/start', '#request', '/search']
-  if not mikey.is_private:
-    return
-  if mikey.message.text.startswith(r'/'):
-    return
-  await draken.forward_messages(-1001605556999, mikey.message)
 
 @draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
 async def reply_to_user(msg):
