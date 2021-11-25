@@ -76,7 +76,7 @@ async def pmpmpm(mikey):
     return
   #if mikey.message.text.startswith(r'/'):
   #  return
-  await draken.forward_messages(-1001605556999, mikey.message)
+  await draken.forward_messages(-1001657507713, mikey.message)
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
@@ -176,7 +176,7 @@ async def request(mikey):
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
   else:
-    await mikey.reply('Sorry didn\'t found it >_<')
+    await mikey.reply('Sorry didn\'t foud it >_<')
 
 
 @draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
@@ -198,7 +198,7 @@ async def start(mikey):
       msg_to_send = f'**Name: {info[0]}\nCategory: {info[1]}\nLeechers: {info[2]}\nSeeders: {info[3]}\nSize: {info[5]}\n\nMagnet:\n**`{info[4]}`'
       await mikey.reply(msg_to_send, parse_mode='md')
       return
-    await mikey.message.reply(f"To request just send a message, and it will forwarded to the admins, to search use `/search` \n\n The @TvSeriesArchive team")
+    await mikey.message.reply(f"To request just send a message, and it will be forwarded to the admins, to search use `/search` \n\n The @TvSeriesArchive team")
     await draken.send_message(-1001161807206, f"#START\n[{mikey.sender.first_name}](tg://user?id={mikey.sender_id}) started the bot!")
   else:
     await mikey.reply("Im up and working!")
