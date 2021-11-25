@@ -169,18 +169,17 @@ async def request(mikey):
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
+@draken.on(events.NewMessage(incoming=True))
+async def pmpmpm(mikey)
+  li = ['/start', '#request']
+  if mikey.message.text not in li:
+    await draken.forward_messages(-1001605556999, mikey.message)
+
 @draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
 async def reply_to_user(msg):
   repl = await msg.get_reply_message()
   try:
-    user_to_message = repl.text.split('`', 1)[1]
-    user_to_message = user_to_message.split('`')[0]
-    user_to_message = int(user_to_message)
-  except IndexError:
-    user_to_message = repl.forward.from_id
-  try:
-    text = msg.message.text + ''
-    await draken.send_message(user_to_message, msg.message.text)
+    await draken.send_message(repl.forward.from_id, msg.message.text)
   except errors.rpcerrorlist.UserIsBlockedError:
     return await msg.reply('Seems like the user blocked me...')
   
