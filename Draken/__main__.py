@@ -172,6 +172,8 @@ async def request(mikey):
 @draken.on(events.NewMessage(incoming=True))
 async def pmpmpm(mikey):
   li = ['/start', '#request']
+  if not mikey.is_private:
+    return
   if mikey.message.text not in li:
     await draken.forward_messages(-1001605556999, mikey.message)
 
