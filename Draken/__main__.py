@@ -165,7 +165,7 @@ async def request(mikey):
   if req_log == "True":
     req_user = f"[{mikey.sender.first_name}](tg://user?id={mikey.sender_id})" 
     #message_link = f"https://t.me/c/{str(REQ_CHAT)[4:]}/{mikey.id}"
-    text = f"Request: {query}\nRequested by: {req_user}\n"
+    text = f"Request: {query}\nRequested by: {req_user}\nId: `{mikey.sender_id}`"
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
