@@ -71,7 +71,7 @@ async def admincache(mikey):
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
-@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
+#@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
 async def request(mikey):
   global REQ_CHAT
   if not mikey.is_private:
@@ -196,7 +196,7 @@ async def start(mikey):
       msg_to_send = f'**Name: {info[0]}\nCategory: {info[1]}\nLeechers: {info[2]}\nSeeders: {info[3]}\nSize: {info[5]}\n\nMagnet:\n**`{info[4]}`'
       await mikey.reply(msg_to_send, parse_mode='md')
       return
-    await mikey.message.reply(f"To request use [#request \"`Movie Or series name`\" \"`year`\"] \n\n The @TvSeriesArchive team")
+    await mikey.message.reply(f"To request just send a message, and it will forwarded to the admins, to search use `/search` \n\n The @TvSeriesArchive team")
     await draken.send_message(-1001161807206, f"#START\n[{mikey.sender.first_name}](tg://user?id={mikey.sender_id}) started the bot!")
   else:
     await mikey.reply("Im up and working!")
