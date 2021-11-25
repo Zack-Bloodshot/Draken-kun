@@ -169,7 +169,7 @@ async def request(mikey):
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
-@draken.on(events.NewMessage(incoming=True, pattern=r'^(?!/).*$'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^(?!\/).*$'))
 async def pmpmpm(mikey):
   li = ['/start', '#request', '/search']
   if not mikey.is_private:
