@@ -71,7 +71,7 @@ async def admincache(mikey):
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
-@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^/request(.*)'))
 async def request(mikey):
   global REQ_CHAT
   if not mikey.is_private:
@@ -164,10 +164,25 @@ async def request(mikey):
       return
   if req_log == "True":
     req_user = f"[{mikey.sender.first_name}](tg://user?id={mikey.sender_id})" 
-    message_link = f"https://t.me/c/{str(REQ_CHAT)[4:]}/{mikey.id}"
+    #message_link = f"https://t.me/c/{str(REQ_CHAT)[4:]}/{mikey.id}"
     text = f"Request: {query}\nRequested by: {req_user}\n"
-    await draken.send_message(-1001550475256, text, buttons = [[Button.url(text = "Message", url = message_link)], [Button.inline(text="Request Complete", data = "recomp")]])
-    await mikey.reply("Roger! Request taken, Now wait like a good meme!")
+    await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")]])
+    await mikey.reply("Roger! Admins will reply to you about the request!")
+
+@bot.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
+async def reply_to_user(msg):
+  repl = await msg.get_reply_message()
+  try:
+    user_to_message = repl.text.split('`', 1)[1]
+    user_to_message = user_to_message.split('`')[0]
+    user_to_message = int(user_to_message)
+  except IndexError:
+    user_to_message = repl.forward.from_id
+  try:
+    text = msg.message.text + ''
+    await bot.send_message(user_to_message, msg.message.text)
+  except errors.rpcerrorlist.UserIsBlockedError:
+    return await msg.reply('Seems like the user blocked me...')
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^/start(.*)|/start@DrakenKunRoBot$')) 
 async def start(mikey):
