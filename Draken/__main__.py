@@ -174,8 +174,9 @@ async def pmpmpm(mikey):
   li = ['/start', '#request', '/search']
   if not mikey.is_private:
     return
-  if mikey.message.text not in li:
-    await draken.forward_messages(-1001605556999, mikey.message)
+  if mikey.message.text.startswith(r'/'):
+    return
+  await draken.forward_messages(-1001605556999, mikey.message)
 
 @draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
 async def reply_to_user(msg):
