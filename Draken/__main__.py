@@ -102,8 +102,6 @@ async def request(mikey):
   else:
     only_files = "Off"
   if mikey.message.text.startswith("/search"):
-    if not mikey.sender_id in admins:
-      return  
     req_log='False'
   else:
     req_log='True'
@@ -177,6 +175,8 @@ async def request(mikey):
     text = f"Request: {query}\nRequested by: {req_user}\nId: `{mikey.sender_id}`"
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
+  else:
+    await mikey.reply('Sorry didn\'t found it >_<')
 
 
 @draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
