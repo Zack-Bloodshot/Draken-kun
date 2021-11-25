@@ -180,7 +180,7 @@ async def reply_to_user(msg):
     user_to_message = repl.forward.from_id
   try:
     text = msg.message.text + ''
-    await bot.send_message(user_to_message, msg.message.text)
+    await draken.send_message(user_to_message, msg.message.text)
   except errors.rpcerrorlist.UserIsBlockedError:
     return await msg.reply('Seems like the user blocked me...')
   
