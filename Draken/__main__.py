@@ -92,7 +92,7 @@ async def request(mikey):
     req_log='False'
   else:
     only_files = "Off"
-  elif mikey.message.text.startswith("/search"):
+  if mikey.message.text.startswith("/search"):
     if not mikey.sender_id in admins:
       return  
     req_log='False'
