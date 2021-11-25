@@ -71,7 +71,7 @@ async def admincache(mikey):
   
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
 @draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
-@draken.on(events.NewMessage(incoming=True, pattern=r'^/request(.*)'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
 async def request(mikey):
   global REQ_CHAT
   if not mikey.is_private:
@@ -169,7 +169,7 @@ async def request(mikey):
     await draken.send_message(-1001605556999, text, buttons = [Button.inline(text="Request Complete", data = "recomp")])
     await mikey.reply("Roger! Admins will reply to you about the request!")
 
-@bot.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
+@draken.on(events.NewMessage(incoming=True,func=lambda e: (e.mentioned)))
 async def reply_to_user(msg):
   repl = await msg.get_reply_message()
   try:
