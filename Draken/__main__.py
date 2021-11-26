@@ -69,7 +69,9 @@ async def admincache(mikey):
   await get_all_admins(mikey.chat_id)
   await mikey.reply('Done!')
 
-@draken.on(events.NewMessage(incoming=True, pattern=r'^(?!\/).*$'))
+#r'^(?!\/).*$
+
+@draken.on(events.NewMessage(incoming=True))
 async def pmpmpm(mikey):
   li = ['/start', '#request', '/search']
   if not mikey.is_private:
