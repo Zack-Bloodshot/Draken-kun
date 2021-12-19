@@ -85,8 +85,8 @@ async def pmpmpm(mikey):
 @draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
 async def request(mikey):
   global REQ_CHAT
-  if not mikey.is_private:
-    return
+  #if not mikey.is_private:
+  #  return
   reqseries = -1001487075546
   reqgroup = -1001550963689
   adc = -1001392274404
