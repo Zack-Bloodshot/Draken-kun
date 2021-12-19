@@ -80,9 +80,9 @@ async def pmpmpm(mikey):
     return
   await draken.forward_messages(-1001657507713, mikey.message)
   
-#@draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
-#@draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
-#@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^\/files(.*)'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^\/search(.*)'))
+@draken.on(events.NewMessage(incoming=True, pattern=r'^#request(.*)'))
 async def request(mikey):
   global REQ_CHAT
   if not mikey.is_private:
