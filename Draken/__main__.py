@@ -15,6 +15,8 @@ import re
 
 print("Starting....")
 
+#drakenisbek
+
 #variables 
 
 draken_token = os.environ.get('BOT_TOKEN')
